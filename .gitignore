@@ -1,0 +1,32 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+env/
+.venv/
+
+# Environment Variables (IMPORTANT: Never commit secrets!)
+.env
+.flaskenv
+
+# Flask instance folder (often contains database configs)
+instance/
+
+# Databases
+*.sqlite3
+*.db
+
+# Distribution / Packaging
+dist/
+build/
+*.egg-info/
+
+# Logs
+*.log
+
+# OS metadata
+.DS_Store
+Thumbs.db
