@@ -1,0 +1,20 @@
+replicaCount: 3
+
+ingress:
+  enabled: true
+  host: flask.local
+
+env:
+  - name: FLASK_DEBUG
+    value: "0"
+  - name: APP_GREETING
+    value: "Welcome to PRODUCTION"
+  - name: POSTGRES_HOST
+    value: "prod-db"
+
+postgresql:
+  fullnameOverride: "prod-db"
+  auth:
+    username: "postgres"
+    password: "prodpassword"
+    database: "postgres"

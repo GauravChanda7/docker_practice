@@ -1,0 +1,19 @@
+replicaCount: 1
+
+ingress:
+  enabled: false 
+
+env: 
+  - name: FLASK_DEBUG
+    value: "1"
+  - name: APP_GREETING
+    value: "This is the DEV Environment"
+  - name: POSTGRES_HOST
+    value: "dev-db"
+
+postgresql:
+  fullnameOverride: "dev-db"
+  auth: 
+    username: "postgres"
+    password: "devpassword"
+    database: "postgres"

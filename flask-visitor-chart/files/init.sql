@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS visitors (
+    id SERIAL PRIMARY KEY,
+    visit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    page_name VARCHAR(20)
+);

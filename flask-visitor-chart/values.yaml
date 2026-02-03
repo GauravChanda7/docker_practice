@@ -1,0 +1,39 @@
+replicaCount: 2
+
+image:
+  repository: gauravchanda/flask-visitor-app
+  tag: v2
+
+env:
+  - name: FLASK_DEBUG
+    value: "1"
+  - name: APP_GREETING
+    value: "Welcome to Helm"
+  - name: POSTGRES_HOST
+    value: "my-db"
+
+db: 
+  username: "postgres"
+  password: "mypassword"
+  dbname: "postgres"
+
+postgresql:
+  auth:
+    username: "postgres"
+    password: "mypassword"
+    database: "postgres"
+  fullnameOverride: "my-db"
+  primary:
+    initdb:
+      scripts:
+        init.sql: |
+          CREATE TABLE IF NOT EXISTS visitors (
+            id SERIAL PRIMARY KEY,
+            visit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            page_name VARCHAR(20)
+          );
+
+ingress:
+  enabled: true
+  host: flask.local
+

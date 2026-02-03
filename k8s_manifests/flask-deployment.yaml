@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-flask-app
+  labels:
+    app: my-flask-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-flask-app
+  template:
+    metadata:
+      labels:
+        app: my-flask-app
+    spec:
+      containers:
+      - name: flask-visitor-app
+        image: gauravchanda/flask-visitor-app:v2
+        ports:
+        - containerPort: 5000
+        env:
+        - name: POSTGRES_HOST
+          value: postgres-service
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: my-db-credentials
+              key: username
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-db-credentials
+              key: password
+        - name: POSTGRES_DB
+          valueFrom:
+            secretKeyRef:
+              name: my-db-credentials
+              key: dbname

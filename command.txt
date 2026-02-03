@@ -1,0 +1,13 @@
+Terminal 1:
+minikube stop
+sudo killall minikube
+minikube start
+kubectl patch svc ingress-nginx-controller -n ingress-nginx -p '{"spec": {"type": "LoadBalancer"}}'
+
+Terminal 2:
+sudo fuser -k 80/tcp
+minikube tunnel
+
+Terminal 1:
+curl -v http://flask.local
+
