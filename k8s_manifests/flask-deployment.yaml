@@ -16,9 +16,16 @@ spec:
     spec:
       containers:
       - name: flask-visitor-app
-        image: gauravchanda/flask-visitor-app:v2
+        image: gauravchanda/flask-visitor-app:v3
         ports:
         - containerPort: 5000
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
         env:
         - name: POSTGRES_HOST
           value: postgres-service

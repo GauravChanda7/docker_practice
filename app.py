@@ -1,11 +1,13 @@
 import os
 from flask import Flask
 from auth import auth_bp
+from heavy_load import heavy_load_bp
 from utils import get_db_connection, init_db
 
 app = Flask(__name__)
 
 app.register_blueprint(auth_bp, url_prefix="/auth")
+app.register_blueprint(heavy_load_bp, url_prefix="/heavy")
 
 with app.app_context():
     init_db()
